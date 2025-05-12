@@ -19,19 +19,19 @@ class UserController extends Controller
         return User::findOrFail($id);
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6'
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $data = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|unique:users,email',
+    //         'password' => 'required|string|min:6'
+    //     ]);
 
-        $data['password'] = Hash::make($data['password']);
+    //     $data['password'] = Hash::make($data['password']);
 
-        $user = User::create($data);
-        return response($user, 201);
-    }
+    //     $user = User::create($data);
+    //     return response($user, 201);
+    // }
 
     public function update(Request $request, $id)
     {
